@@ -1,0 +1,299 @@
+/* =============================================
+   SMART DASHBOARD - NAVY TEAL THEME & BENTO GRID
+   ============================================= */
+
+:root {
+  --navy-teal: #0d3b66;
+  --navy-teal-light: #e6eef5;
+  --emerald-green: #10b981;
+  --emerald-green-light: #d1fae5;
+  --soft-red: #f87171;
+  --soft-red-light: #fee2e2;
+  --bg-color: #f4f7f6;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --border-color: rgba(13, 59, 102, 0.1);
+}
+
+/* BENTO GRID LAYOUT */
+.bento-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(120px, auto);
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.bento-item {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 20px 0 rgba(13, 59, 102, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-item:hover {
+  box-shadow: 0 8px 30px 0 rgba(13, 59, 102, 0.08);
+}
+
+/* GRID AREAS SPECIFICS */
+.bento-header { grid-column: span 12; display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; }
+.bento-id-card { grid-column: span 4; grid-row: span 2; }
+.bento-zones { grid-column: span 8; grid-row: span 2; }
+.bento-map { grid-column: span 6; grid-row: span 3; }
+.bento-logs { grid-column: span 6; grid-row: span 3; }
+
+/* HEADER STYLES */
+.smart-header-profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.custom-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--navy-teal);
+  background-color: var(--navy-teal-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.smart-greeting h2 { font-size: 20px; font-weight: 800; color: var(--navy-teal); letter-spacing: -0.5px; margin: 0; }
+.smart-greeting p { font-size: 13px; color: #64748b; margin: 0; }
+.smart-role-selector {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: white;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy-teal);
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* ID CARD DYNAMICS */
+.id-card-wrapper {
+  flex: 1;
+  border-radius: 12px;
+  padding: 24px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.id-card-bg-shape {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+}
+.id-card-header { display: flex; justify-content: space-between; align-items: flex-start; z-index: 1;}
+.id-card-title { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; font-weight: 600;}
+.id-card-icon { font-size: 24px; opacity: 0.9; }
+.id-card-body { margin-top: 20px; z-index: 1;}
+.id-card-name { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.id-card-number { font-size: 13px; font-family: monospace; opacity: 0.9; margin-bottom: 12px;}
+.id-card-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 20px; z-index: 1;}
+.id-card-plat { 
+  background: rgba(0,0,0,0.2); 
+  padding: 6px 12px; 
+  border-radius: 6px; 
+  font-family: monospace; 
+  font-weight: 700; 
+  letter-spacing: 1px;
+}
+.id-card-type { font-size: 12px; opacity: 0.8; display: flex; align-items: center; gap: 4px; }
+
+/* THEMES FOR ID CARDS */
+.id-card-mahasiswa { background: linear-gradient(135deg, var(--navy-teal), #1a5e9e); }
+.id-card-dosen { background: linear-gradient(135deg, #4b5563, #1f2937); }
+.id-card-tamu { background: linear-gradient(135deg, var(--emerald-green), #047857); }
+
+/* WIDGET TITLE */
+.widget-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy-teal);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ZONATION PROGRESS BARS */
+.zone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  justify-content: center;
+}
+
+.zone-item { 
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.zone-item:hover {
+  background: #f8fafc;
+}
+
+.zone-item.active {
+  background: var(--navy-teal-light);
+  border-color: rgba(13, 59, 102, 0.2);
+}
+
+.zone-info { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: var(--navy-teal);}
+.zone-bar-bg { height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
+.zone-bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease-in-out, background-color 0.5s; }
+
+/* MAP GRID */
+.parking-map-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.map-legend { display: flex; gap: 16px; margin-bottom: 16px; font-size: 12px; font-weight: 600; color: #64748b; flex-wrap: wrap;}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-color { width: 12px; height: 12px; border-radius: 3px; }
+.map-grid {
+  display: grid;
+  gap: 6px;
+  flex: 1;
+}
+
+.slot-item {
+  aspect-ratio: 1;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.slot-empty { background: var(--emerald-green-light); color: var(--emerald-green); border: 1.5px dashed #34d399; cursor: pointer;}
+.slot-empty:hover { background: #a7f3d0; transform: scale(1.05); }
+.slot-filled { background: var(--soft-red-light); color: var(--soft-red); border: 1.5px solid #fca5a5; }
+
+/* TABLE LOGS */
+.log-table-container {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.log-table th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 12px;
+  color: #64748b;
+  border-bottom: 1px solid #e2e8f0;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.log-table td {
+  padding: 12px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.log-row-avatar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mini-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .bento-id-card { grid-column: span 12; grid-row: auto; }
+  .bento-zones { grid-column: span 12; grid-row: auto; }
+  .bento-map { grid-column: span 12; grid-row: auto; min-height: 400px;}
+  .bento-logs { grid-column: span 12; grid-row: auto; min-height: 300px;}
+}
+
+@media (max-width: 768px) {
+  .bento-header { 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 16px; 
+    padding: 16px;
+  }
+  .smart-header-profile { 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 12px;
+  }
+  .bento-item {
+    padding: 16px;
+    border-radius: 16px;
+  }
+  .parking-map-container {
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  .map-grid {
+    min-width: 300px;
+  }
+  .log-table-container {
+    overflow-x: auto;
+  }
+  .log-table th, .log-table td {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .bento-container {
+    gap: 12px;
+  }
+  .smart-greeting h2 {
+    font-size: 18px;
+  }
+  .id-card-wrapper {
+    padding: 16px;
+  }
+  .bento-map {
+    min-height: 300px;
+  }
+}
+
